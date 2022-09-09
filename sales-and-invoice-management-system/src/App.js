@@ -24,7 +24,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/SigninPage/Signin' element={<Signin/>}/>
+      <Route path='/pages/SigninPage/Signin' element={<Signin/>}/>
 
       <Route path='/components/AdminSidebar' element={<AdminSidebar/>}/>
       <Route path='/components/UserSidebar' element={<UserSidebar/>}/>
