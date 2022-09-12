@@ -5,7 +5,7 @@ const AdminSidebar = () => {
     <div>
        
       {/* The sidebar */}
-      <div class="sidebar">
+      <div class="sidebar" >
       <div>
           <b>
             <center>

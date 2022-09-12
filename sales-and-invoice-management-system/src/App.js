@@ -9,9 +9,13 @@ import AdminSidebar from './components/AdminSidebar';
 import UserSidebar from './components/UserSidebar';
 
 import Users from './pages/Admin/Users/users';
+import Usertable from './pages/Admin/Users/components/usertable';
+
+
 import Company from './pages/Admin/Company/company';
 import Products from './pages/Admin/Product/product';
 import Reports from './pages/Admin/Reports/reports';
+import AddUser from './pages/Admin/Users/components/AddUser';
 
 
 
@@ -28,8 +32,18 @@ function App() {
 
       <Route path='/components/AdminSidebar' element={<AdminSidebar/>}/>
       <Route path='/components/UserSidebar' element={<UserSidebar/>}/>
+      
 
       <Route path='/components/users' element={<Users/>}/>
+      <Route path='/Users/components/Usertable' element={<Usertable/>}/>
+      <Route path='/Users/components/AddUser' element={<AddUser/>}/>
+      
+
+
+
+
+
+
       <Route path='/components/products' element={<Products/>}/>
       <Route path='/components/company' element={<Company/>}/>
       <Route path='/components/reports' element={<Reports/>}/>
