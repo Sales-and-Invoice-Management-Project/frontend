@@ -14,9 +14,11 @@ const UserSidebar = function () {
             </center>
           </b> 
         </div><hr/>
-          <a href="#invoice"><i class="fa fa-file-text"></i> Invoice</a>
-          <a href="#inventory"><i class="fa fa-cubes"></i> Inventory</a>
-          <a href="#signout"><i class="fa fa-sign-out"></i> Sign-Out</a>
+
+          <a href="UserDashboard"><i className="fa fa-tachometer"></i> Dashboard</a>
+          <a href="invoice"><i class="fa fa-file-text"></i> Invoice</a>
+          <a href="inventory"><i class="fa fa-cubes"></i> Inventory</a>
+          <a href="signout"><i class="fa fa-sign-out"></i> Sign-Out</a>
         </div>
     </div>
   )}

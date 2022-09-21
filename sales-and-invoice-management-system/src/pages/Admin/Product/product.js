@@ -1,49 +1,30 @@
 import AdminSidebar from "../../../components/AdminSidebar"
+import {useNavigate} from 'react-router-dom'
+import Producttable from "./components/producttable"
+import './product.css'
 
 const Products = () => {
+  const navigate = useNavigate();
+    const AddProduct=()=>{ 
+        navigate('../Product/components/AddProduct')
+    }
+
     return(
+      <div className="product-image">
+        <AdminSidebar/>
         <div>
-            <AdminSidebar/>
-            <div class="container">
-            <center><h1>Products</h1></center>
+        <h1 style={{textAlign:"center"}}>Product Details</h1><br/><br/>
+        </div> 
+        <div className="product">
+        <form class="d-flex">
+       <button class="btn btn-outline-success" onClick={AddProduct} type="submit">Add Product</button>
+     </form>
+     <br/>
+    <Producttable/>
 
-            <button class="btn btn-primary" type="button">Add Product</button>
-            <table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-            </div>
-           
-        </div>
+        </div> 
+        </div> 
+       
 
     )
 }

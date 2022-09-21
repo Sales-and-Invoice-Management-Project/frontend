@@ -8,24 +8,21 @@ const Home =()=> {
     }
     
   return (
-    <div>
+    <div className='home'>
                       {/* Navbar */}
             
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"> Sales and Invoice Management System </a>
-            <form class="d-flex">
-              <button class="btn btn-outline-success" onClick={Signin} type="submit">Sigin-in</button>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#"> Sales and Invoice Management System </a>
+            <form className="d-flex">
+              <button className="btn btn-success" onClick={Signin} type="submit">Sigin-in</button>
             </form>
           </div>
         </nav>
 
-      <div>
+      {/* <div>
         <img src={a1}/>
-      </div>
-      <div class="mt-5 p-4 bg-dark text-white text-center">
-        <p>Footer</p>
-      </div>
+      </div> */}
     </div>
     
   )

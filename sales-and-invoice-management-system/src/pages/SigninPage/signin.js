@@ -17,12 +17,12 @@ const Signin=()=>{
         usersService.signinUser(signInUser)
         .then(response =>{
             console.log("signin successfull",response.data)
-            if(response.data===1){
+            if(response.data.role==='ADMIN'){
                 console.log("Admin sign in");
-                navigate('/components/AdminSidebar');
+                navigate('/components/AdminDashboard');
             }else{
                 console.log("user sign in")
-                navigate('/components/UserSidebar')
+                navigate('/components/UserDashboard')
             }
         })
         .catch(error => {
@@ -70,7 +70,7 @@ const Signin=()=>{
                     </div>
                     <br/>
                     <div className="d-flex">
-                        <button className="btn btn-outline-success" onClick={(e)=>AuthUser(e)} >Sigin-in</button>
+                        <button className="btn btn-success" onClick={(e)=>AuthUser(e)} >Sigin-in</button>
                     </div>
                     
                 </form>
