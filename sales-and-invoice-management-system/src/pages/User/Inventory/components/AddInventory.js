@@ -1,10 +1,10 @@
-import '../components/AddProduct.css'
+import '../components/AddInventory.css'
 import {useNavigate} from 'react-router-dom'
 
-const AddProduct = () =>{
+const AddInventory = () =>{
   const navigate = useNavigate();
   const Products=()=>{
-    navigate('/components/products')
+    navigate('/components/inventory')
   }
   return(
   <div className="addproduct-image"><br/><br/><br/>
@@ -15,6 +15,7 @@ const AddProduct = () =>{
           <div className="h1">
             <i className="fa fa-cubes"></i>
           </div>
+          
           <div className='product-form'>
             <div>
               <center><h1>Add Product</h1></center><hr/>
@@ -65,7 +66,7 @@ const AddProduct = () =>{
                       <label for="txt" className="form-label">Total Stock</label>
                       <input type="number" className="form-control"  name="stock"/>
                     </div>
-                    
+                      
                     <div className="col">
                       <label for="txt" className="form-label">Company Name</label>
                       <input type="text" className="form-control"  name="companyname"/>
@@ -85,4 +86,4 @@ const AddProduct = () =>{
 
 )}
 
-export default AddProduct
+export default AddInventory

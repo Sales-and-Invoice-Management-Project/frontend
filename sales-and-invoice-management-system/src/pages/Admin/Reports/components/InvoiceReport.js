@@ -1,26 +1,26 @@
 import '../reports.css'
 
-const CompanyReport = () =>{
+const InvoiceReport = () =>{
   return(
   <div className="report-image"><br/><br/><br/>
   <div className="text-center">
-    <div className="col-2" style={{marginLeft:"110px", width:"85%"}}>
+    <div className="col-2" style={{marginLeft:"150px", width:"80%"}}>
       <div className="card bg-dark text-light">
         <div className="card-body text-center">
           <div className="h1">
-            <i className="fa fa-building-o"></i>
+            <i className="fa fa-file-text"></i>
           </div>
           <h3 className="card-title">
-            Company Reports<hr/>
+            Invoice Reports<hr/>
           </h3><br/><br/>
           
-          <table className="table" style={{width:"90%", marginLeft:"50px"}}>
+          <table className="table" style={{width:"80%", marginLeft:"110px"}}>
             <thead className="table-success">
               <tr style={{textAlign:"center"}}>
-                <th scope="col">Company Id</th>
-                <th scope="col">Company Name</th>
-                <th scope="col">Email Id</th>
-                <th scope="col">Contact No.</th>
+                <th scope="col">Order Id</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">User Name</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -28,12 +28,12 @@ const CompanyReport = () =>{
             <tbody>
               <tr style={{textAlign:"center", color:"white"}}>
                 <th scope="row">1</th>
-                <td>Nestlé Global</td>
-                <td>wecare@in.nestle.com</td>
-                <td>+91 1242389300</td>
+                <td>20/08/2022</td>
+                <td>Paid</td>
+                <td>Admin</td>
                 <td>
                   <div className="d-flex">
-                    <button className="btn btn-outline-primary" type="button" style={{marginLeft:"100px", marginRight:"30px"}}>View</button>
+                    <button className="btn btn-outline-primary" type="button" style={{marginLeft:"140px", marginRight:"30px"}}>View</button>
                     <button className="btn btn-outline-danger" type="button">Delete</button>
                   </div>
                 </td>
@@ -48,4 +48,4 @@ const CompanyReport = () =>{
 
 )}
 
-export default CompanyReport
+export default InvoiceReport

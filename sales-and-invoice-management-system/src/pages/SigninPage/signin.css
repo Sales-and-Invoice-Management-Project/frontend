@@ -1,16 +1,8 @@
 .admin{
-    height: 350px;
-    width: 370px;
-    border: 2px solid black;
-    border-radius: 30px;
-  
+    height: 250px;
     position: relative;
-    top: 50px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     margin: auto;
-    padding: 50px;
+    padding: 20px;
   
   }
 
