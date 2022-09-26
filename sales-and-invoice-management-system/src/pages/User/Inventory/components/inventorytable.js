@@ -23,6 +23,7 @@ const Inventorytable = () =>{
             <div class="d-flex">
               <button class="btn btn-outline-primary" type="button" style={{marginLeft:"100px", marginRight:"50px"}}>View</button>
               <button class="btn btn-outline-warning" type="button" style={{marginRight:"40px"}}>Update</button>&nbsp;
+              <button className="btn btn-outline-danger" type="button">Delete</button>
             </div>
           </td>
         </tr>

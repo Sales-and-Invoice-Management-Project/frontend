@@ -14,7 +14,7 @@ const AdminSidebar = () => {
       <a href="products"><i className="fa fa-cubes"></i> Products</a>
       <a href="company"><i className="fa fa-building"></i> Company</a>
       <a href="reports"><i className="fa fa-list-alt"></i> Reports</a>
-      <a href="signout"><i className="fa fa-sign-out"></i> Sign-Out</a>
+      <a href="/"><i className="fa fa-sign-out"></i> Sign-Out</a>
     </div>
   </div>
 )}

@@ -1,10 +1,13 @@
-import '../components/AddProduct.css'
-import {useNavigate} from 'react-router-dom'
+// import './product.css'
+import {useNavigate, useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import usersService from '../../../../services/users.service';
 
-const AddProduct = () =>{
-  const[category,setProductCategory] = useState('');
+
+const UpdateProduct = () =>{
+  const{id} = useParams()
+    const[productId,setProductId] = useState('');
+    const[category,setProductCategory] = useState('');
   const[productName,setProductName] = useState('');
   const[mfgDate,setMfgDate] = useState('');
   const[expDate,setExpDate] = useState('');
@@ -12,13 +15,16 @@ const AddProduct = () =>{
   const[totalStock,setTotalStock] = useState('');
   const[companyId,setCompanyId] = useState('');
   const[companyData,setCompanyData] = useState([]);
+  const[companyName,setCompanyName] = useState('Received Nothing. Something Went Wrong');
+
   const navigate = useNavigate();
 
-  const saveProduct = (e)=>{
+  const Product = (e)=>{
     e.preventDefault();
 
-    const productDetails = {category,productName,mfgDate,expDate,costPerItem,totalStock,companyId}
-    usersService.addProduct(productDetails)
+  const[companyName,setCompanyName] = useState('Received Nothing. Something Went Wrong');
+    const productDetails = {productId,category,productName,mfgDate,expDate,costPerItem,totalStock,companyId,companyName}
+    usersService.updateProduct(productDetails)
     .then(response=>{
       navigate('/components/products');
       console.log('product added successfully '+ response.data);
@@ -29,14 +35,32 @@ const AddProduct = () =>{
   }
 
   useEffect(()=>{
-    usersService.getAllCompany()
-    .then((response)=>{
-      console.log(response.data);
-      setCompanyData(response.data);
-    })
-    .catch((error)=>{
-      console.log("Somwthing went wrong "+error)
-    })
+    usersService.getProduct(id)
+        .then((response)=>{
+          console.log(response.data);
+            setProductId(response.data.productId);
+            setProductCategory(response.data.category);
+            setProductName(response.data.productName);
+            setCostPerItem(response.data.costPerItem);
+            setMfgDate(response.data.mfgDate);
+            setExpDate(response.data.expDate);
+            setTotalStock(response.data.totalStock);
+            setCompanyName(response.data.companyId.companyName);
+
+
+        })
+        .catch((error)=>{
+            console.log("Something went wrong",error)
+        })
+// =====================================
+        usersService.getAllCompany()
+        .then((response)=>{
+          console.log(response.data);
+          setCompanyData(response.data);
+        })
+        .catch((error)=>{
+          console.log("Somwthing went wrong "+error)
+        })
   },[])
   return(
   <div className="addproduct-image"><br/><br/><br/>
@@ -49,7 +73,7 @@ const AddProduct = () =>{
           </div>
           <div className='product-form'>
             <div>
-              <center><h1>Add Product</h1></center><hr/>
+              <center><h1>Update Product</h1></center><hr/>
               <div>
                 <br/>
                 <form>
@@ -132,13 +156,13 @@ const AddProduct = () =>{
                     <option>Select Company</option>
                     {
                       companyData.map((company)=>{
-                        return <option value={company.companyId} >{company.companyName}</option>
+                        return <option value={company.companyId.companyName} >{company.companyName}</option>
                       })}
                   </select>
                     </div>
                   </div>
                   <br/>
-                  <button type="button" className="btn btn-primary" onClick={(e)=>saveProduct(e)}>Submit</button>
+                  <button type="button" className="btn btn-primary" onClick={Product}>Upadte Product</button>
                 </form>
               </div>
             </div>
@@ -148,7 +172,7 @@ const AddProduct = () =>{
     </div>
   </div>
   </div>
+    )
+}
 
-)}
-
-export default AddProduct
+export default UpdateProduct

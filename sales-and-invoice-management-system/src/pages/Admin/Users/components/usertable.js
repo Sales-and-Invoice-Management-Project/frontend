@@ -1,5 +1,38 @@
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
+import usersService from "../../../../services/users.service";
+import {useNavigate} from 'react-router-dom'
 
 const Usertable = () =>{
+
+  const navigate = useNavigate();
+  const[user,setUser] = useState([]);
+  const getUsers=()=>{
+        usersService.getAllUser()
+        .then((response)=>{
+          setUser(response.data);
+        })
+        .catch((error)=>{
+          console.log('something went wrong', error);
+        })
+  }
+
+  const deleteUser=(id)=>{
+    usersService.deleteUser(id)
+    .then(response=>{
+      console.log('deleted successfully ' + response.data);
+      getUsers();
+    })
+    .catch((error)=>{
+      console.log('something went wrong '+error);
+    })
+  }
+ 
+  useEffect(()=>{
+   getUsers()
+  },[])
+
+  console.log(user)
   return(
   <div>
     <table className="table" style={{width:"90%", marginLeft:"50px"}}>
@@ -14,36 +47,30 @@ const Usertable = () =>{
       </thead>
       
       <tbody>
-        <tr style={{textAlign:"center", color:"white"}}>
-          <th scope="row">1</th>
-          <td>Owner</td>
-          <td>Admin</td>
-          <td>1234567890</td>
-          <td>
-            <div className="d-flex">
-              <button className="btn btn-outline-primary" type="button" style={{marginLeft:"140px", marginRight:"50px"}}>View</button>
-              <button className="btn btn-outline-warning" type="button" style={{marginRight:"40px"}}>Update</button>&nbsp;
-              <button className="btn btn-outline-danger" type="button">Delete</button>
-            </div>
+
+        {user.map((users)=>{
+          return(
+            <tr style={{textAlign:"center", color:"white"}}>
+              <th scope="row">{users.userId}</th>
+              <td>{users.firstName}</td>
+              <td>{users.lastName}</td>
+              <td>{users.contactNo}</td>
+              <td>
+              <div className="d-flex">
+                <Link className="btn btn-outline-primary" to={`/Users/components/ShowUser/${users.userId}`} style={{marginLeft:"140px", marginRight:"50px"}}>View</Link>
+                <Link className="btn btn-outline-warning" to={`/Users/components/UpdateUser/${users.userId}`} type="button" style={{marginRight:"40px"}}>Update</Link>&nbsp;
+                <button className="btn btn-outline-danger" onClick={()=>{
+                  deleteUser(users.userId);
+                }} type="button">Delete</button>
+              </div>
           </td>
-        </tr>
+            </tr>
+          )
+        })}
+
       </tbody>
       
-      <tbody>
-        <tr style={{textAlign:"center", color:"white"}}>
-          <th scope="row">2</th>
-          <td>User</td>
-          <td>One</td>
-          <td>0987456321</td>
-          <td>
-            <div className="d-flex">
-              <button className="btn btn-outline-primary" type="button" style={{marginLeft:"140px", marginRight:"50px"}}>View</button>
-              <button className="btn btn-outline-warning" type="button" style={{marginRight:"40px"}}>Update</button>&nbsp;
-              <button className="btn btn-outline-danger" type="button">Delete</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
+    
     </table>
   </div>
         

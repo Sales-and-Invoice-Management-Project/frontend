@@ -1,33 +1,51 @@
 import '../components/AddCompany.css'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import usersService from '../../../../services/users.service';
 
-
-const AddCompany = () =>{
-  const[companyName,setCompanyName] = useState('');
-    const[companyDetails,setCompanyDetails] = useState('');
-    const[email,setEmail] = useState('');
-    const[companyContact,setCompanyContact] = useState('');
-    const[address,setAddress] = useState('');
+const UpdateCompany =()=>{
+    const {id}= useParams();
+    const[companyId,setCompanyId] = useState('Received Nothing. Something Went Wrong');
+    const[companyName,setCompanyName] = useState('Received Nothing. Something Went Wrong');
+    const[companyDetails,setCompanyDetails] = useState('Received Nothing. Something Went Wrong');
+    const[email,setEmail] = useState('Received Nothing. Something Went Wrong');
+    const[companyContact,setCompanyContact] = useState('Received Nothing. Something Went Wrong');
+    const[address,setAddress] = useState('Received Nothing. Something Went Wrong');
   const navigate = useNavigate();
 
-  const saveCompany = (e)=>{
+  const Company = (e)=>{
     e.preventDefault();
 
-    const companyinfo = {companyName,companyDetails,email,companyContact,address}
-    usersService.addCompany(companyinfo)
+    const companyinfo = {companyId,companyName,companyDetails,email,companyContact,address}
+    usersService.updateCompany(companyinfo)
     .then(response=>{
       navigate('/components/company');
-      console.log('company added successfully '+ response.data);
+      console.log('user added successfully '+ response.data);
     })
     .catch(error=>{
       console.log("Something went wrong "+ error);
     })
   }
 
-  return(
-  <div className="addcompany-image"><br/><br/><br/>
+  useEffect(()=>{
+    
+    usersService.getCompany(id)
+    .then((response)=>{
+        setCompanyId(response.data.companyId);
+        setCompanyName(response.data.companyName);
+        setCompanyDetails(response.data.companyDetails);
+        setEmail(response.data.email);
+        setCompanyContact(response.data.companyContact);
+        setAddress(response.data.address);
+    })
+    .catch((error)=>{
+        console.log("Something went wrong",error)
+    })
+}
+
+,[])
+    return(
+        <div className="addcompany-image"><br/><br/><br/>
   <div className="text-center" >
     <div className="col-2" style={{marginLeft:"300px", width:"60%"}}>
       <div className="card bg-dark text-light">
@@ -37,7 +55,7 @@ const AddCompany = () =>{
           </div>
           <div className='product-form'>
             <div>
-              <center><h1>Add Company</h1></center><hr/>
+              <center><h1>Update Company</h1></center><hr/>
               <div>
                 <br/>
                 <form>
@@ -97,7 +115,7 @@ const AddCompany = () =>{
                     </div>
                   </div>
                   <br/>
-                  <button type="button" className="btn btn-primary" onClick={(e)=>saveCompany(e)}>Submit</button>
+                  <button type="button" className="btn btn-primary" onClick={Company}>Update Company Details</button>
                 </form>
               </div>
             </div>
@@ -107,7 +125,7 @@ const AddCompany = () =>{
     </div>
   </div>
   </div>
+    )
+}
 
-)}
-
-export default AddCompany
+export default UpdateCompany

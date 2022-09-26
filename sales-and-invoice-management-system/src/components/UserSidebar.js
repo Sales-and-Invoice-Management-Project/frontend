@@ -11,7 +11,7 @@ const UserSidebar = function () {
         <a href="UserDashboard"><i className="fa fa-tachometer"></i> Dashboard</a>
         <a href="invoice"><i className="fa fa-file-text"></i> Invoice</a>
         <a href="inventory"><i className="fa fa-cubes"></i> Inventory</a>
-        <a href="signout"><i className="fa fa-sign-out"></i> Sign-Out</a>
+        <a href="/"><i className="fa fa-sign-out"></i> Sign-Out</a>
       </div>
     </div>
   )}

@@ -24,49 +24,44 @@ const AddInventory = () =>{
                 <form>
                   <div className="row">
                     <div className="col">
-                      <label for="txt" className="form-label">Product Id</label>
-                      <input type="number" className="form-control"  name="product id"/>
-                    </div>
-                    
-                    <div className="col">
                       <label for="txt" className="form-label">Product Category</label>
                       <input type="text" className="form-control" name="product category"/>
                     </div>
-                  </div>
-                  <br/>
-                  
-                  <div className="row">
+
                     <div className="col">
                       <label for="txt" className="form-label">Product Name</label>
                       <input type="text" className="form-control"  name="product name"/>
                     </div>
-                    
+                  </div>
+                  <br/>
+                  
+                  <div className="row">
                     <div className="col">
                       <label for="txt" className="form-label">Manufacture Date</label>
                       <input type="date" className="form-control"  name="mdate"/>
                     </div>
-                  </div>
-                  <br/>
-                  
-                  <div className="row">
+
                     <div className="col">
                       <label for="date" className="form-label">Expiry Date</label>
                       <input type="date" className="form-control"  name="edate"/>
                     </div>
-                    
-                    <div className="col">
-                      <label for="txt" className="form-label">Cost Per Item</label>
-                      <input type="number" className="form-control"  name="costperitem"/>
-                    </div>
                   </div>
                   <br/>
                   
                   <div className="row">
                     <div className="col">
+                      <label for="txt" className="form-label">Cost Per Item</label>
+                      <input type="number" className="form-control"  name="costperitem"/>
+                    </div>
+
+                    <div className="col">
                       <label for="txt" className="form-label">Total Stock</label>
                       <input type="number" className="form-control"  name="stock"/>
                     </div>
-                      
+                  </div>
+                  <br/>
+                  
+                  <div className="row">
                     <div className="col">
                       <label for="txt" className="form-label">Company Name</label>
                       <input type="text" className="form-control"  name="companyname"/>

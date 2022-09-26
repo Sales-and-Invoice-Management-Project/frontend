@@ -17,6 +17,7 @@ const Signin=()=>{
     usersService.signinUser(signInUser)
     .then(response =>{
         console.log("signin successfull",response.data)
+        window.localStorage.setItem("userId",response.data.userId);
         if(response.data.role==='ADMIN'){
             console.log("Admin sign in");
             navigate('/components/AdminDashboard');
@@ -26,6 +27,7 @@ const Signin=()=>{
         }
     })
     .catch(error => {
+        alert("Please Enter correct details")
         console.log("Sign in failed!!!!!",error)
     })
 }

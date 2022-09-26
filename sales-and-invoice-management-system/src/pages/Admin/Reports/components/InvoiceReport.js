@@ -1,6 +1,39 @@
+import { useEffect, useState } from 'react'
 import '../reports.css'
+import usersService from '../../../../services/users.service';
+import { Link } from 'react-router-dom';
 
 const InvoiceReport = () =>{
+  const[invoiceDetails,setInvoiceDetails] = useState([]);
+  const getInvoice = () =>{
+    console.log("in method");
+    usersService.getAllInvoice()
+    .then((response)=>{
+      console.log(response.data);
+      setInvoiceDetails(response.data);
+      console.log(invoiceDetails);
+    })
+    .catch((error)=>{
+      console.log('something went wrong', error);
+    })
+  }
+
+  const deleteInvoice=(id)=>{
+    usersService.deleteInvoice(id)
+    .then(response=>{
+      console.log('deleted successfully ' + response.data);
+      getInvoice();
+    })
+    .catch((error)=>{
+      console.log('something went wrong '+error);
+    })
+  }
+
+  useEffect(()=>{
+    console.log("Use effect working");
+    getInvoice();
+  },[])
+
   return(
   <div className="report-image"><br/><br/><br/>
   <div className="text-center">
@@ -26,18 +59,24 @@ const InvoiceReport = () =>{
             </thead>
             
             <tbody>
-              <tr style={{textAlign:"center", color:"white"}}>
-                <th scope="row">1</th>
-                <td>20/08/2022</td>
-                <td>Paid</td>
-                <td>Admin</td>
-                <td>
+              {invoiceDetails.map((invoiceDetail)=>{
+                return(
+                  <tr style={{textAlign:"center", color:"white"}}>
+                    <th scope="row">{invoiceDetail.orderId}</th>
+                    <td>{invoiceDetail.orderDate}</td>
+                    <td>Paid</td>
+                    <td>{invoiceDetail.firstName}</td>
+                    <td>
                   <div className="d-flex">
-                    <button className="btn btn-outline-primary" type="button" style={{marginLeft:"140px", marginRight:"30px"}}>View</button>
-                    <button className="btn btn-outline-danger" type="button">Delete</button>
+                    <Link className="btn btn-outline-primary" to={`/Reports/components/showInvoiceReport/${invoiceDetail.orderId}`} style={{marginLeft:"140px", marginRight:"30px"}}>View</Link>
+                    <button className="btn btn-outline-danger" onClick={()=>{
+                        deleteInvoice(invoiceDetail.orderId);
+                      }} type="button">Delete</button>
                   </div>
                 </td>
-              </tr>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
