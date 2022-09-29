@@ -32,7 +32,6 @@ const signinUser = (data) =>{
 
     //user ends
 /*====================================================*/
-
     //company
     const getAllCompany = ()=>{
       return httpClient.get('/getAllCompany');
@@ -130,7 +129,6 @@ const signinUser = (data) =>{
     }
 
     //invoice ends
-
 
 
 export default {signinUser,getAllUser,addUser,getUser,updateUser,deleteUser,

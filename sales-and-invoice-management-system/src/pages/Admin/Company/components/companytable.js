@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 const Companytable = () =>{
   const navigate = useNavigate();
   const[company,setCompany] = useState([]);
+
   const getCompany=()=>{
         usersService.getAllCompany()
         .then((response)=>{
@@ -20,7 +21,7 @@ const Companytable = () =>{
     usersService.deleteCompany(id)
     .then(response=>{
       console.log('deleted successfully ' + response.data);
-      getUsers();
+      getCompany();
     })
     .catch((error)=>{
       console.log('something went wrong '+error);
